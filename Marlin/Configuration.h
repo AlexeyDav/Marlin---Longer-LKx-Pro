@@ -69,7 +69,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(Shaman, Longer3D LK4Pro Bltouch)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Shaman, Longer3D LK4Pro Bltouch 220724)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -622,7 +622,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
+#define HEATER_0_MAXTEMP 280
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -631,7 +631,7 @@
 #define HEATER_6_MAXTEMP 275
 #define HEATER_7_MAXTEMP 275
 #define BED_MAXTEMP 130
-#define CHAMBER_MAXTEMP 60
+#define CHAMBER_MAXTEMP 75
 
 /**
  * Thermal Overshoot
@@ -667,9 +667,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp 14.08
-    #define DEFAULT_Ki 0.82
-    #define DEFAULT_Kd 60.56
+    #define DEFAULT_Kp 12.81
+    #define DEFAULT_Ki 0.88
+    #define DEFAULT_Kd 46.71
   #endif
 #endif
 
@@ -1316,11 +1316,11 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -46, 1, -0.77 }
+#define NOZZLE_TO_PROBE_OFFSET { 4, -43.25, -1.42 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 10
+#define PROBING_MARGIN 15
 #if ENABLED(LGT_MAC)
   #define EQUAL_MARGIN_ALL_SIDES    // Adjusts the margin so the bed is probed at equal distance on all sides.
                                     // It will not use a margin less than PROBING_MARGIN
@@ -1381,7 +1381,7 @@
  */
 #ifdef LKPro_BLTOUCH // Set to your liking
   #define MULTIPLE_PROBING 2
-  #define EXTRA_PROBING 1
+  //#define EXTRA_PROBING 1
 #else
   //#define MULTIPLE_PROBING 2
   //#define EXTRA_PROBING    1
@@ -1409,8 +1409,8 @@
 #define Z_PROBE_LOW_POINT -2 // Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
-#define Z_PROBE_OFFSET_RANGE_MIN -20
-#define Z_PROBE_OFFSET_RANGE_MAX 20
+#define Z_PROBE_OFFSET_RANGE_MIN -3
+#define Z_PROBE_OFFSET_RANGE_MAX 3
 
 // Enable the M48 repeatability test to test probe accuracy
 #ifdef LKPro_BLTOUCH
@@ -1550,14 +1550,14 @@
   #define Y_BED_SIZE 300 // for LK1 pro
 #else                  // LK4 Pro
   #define X_BED_SIZE 230 //  For Alphawise and Longer U30 pro LK4 pro
-  #define Y_BED_SIZE 220 //  For Alphawise and Longer U30 pro LK4 pro
+  #define Y_BED_SIZE 230 //  For Alphawise and Longer U30 pro LK4 pro
 #endif
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE+5
+#define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 
 #if defined(LK1_Pro) || defined(LK5_Pro)
@@ -1823,7 +1823,7 @@
 
     // Beyond the probed grid, continue the implied tilt?
     // Default is to maintain the height of the nearest edge.
-    //#define EXTRAPOLATE_BEYOND_GRID
+    #define EXTRAPOLATE_BEYOND_GRID
 
     //
     // Experimental Subdivision of the grid by Catmull-Rom method.
