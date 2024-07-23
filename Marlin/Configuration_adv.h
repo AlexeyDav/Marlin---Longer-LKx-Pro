@@ -2082,6 +2082,14 @@
  * probe points will follow. This prevents any change from causing
  * the probe to be unable to reach any points.
  */
+
+#if ENABLED(LKPro_BLTOUCH)
+ #define PROBING_MARGIN_LEFT 7 //PROBING_MARGIN
+ #define PROBING_MARGIN_RIGHT 7 //PROBING_MARGIN
+ #define PROBING_MARGIN_FRONT 20 //PROBING_MARGIN
+ #define PROBING_MARGIN_BACK 50 //PROBING_MARGIN
+#endif
+
 #if PROBE_SELECTED && !IS_KINEMATIC
  //#define PROBING_MARGIN_LEFT PROBING_MARGIN
  //#define PROBING_MARGIN_RIGHT PROBING_MARGIN
