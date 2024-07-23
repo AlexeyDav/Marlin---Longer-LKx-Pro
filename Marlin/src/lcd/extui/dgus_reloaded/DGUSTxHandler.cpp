@@ -711,7 +711,7 @@ void DGUSTxHandler::JerkStepsMmE(DGUS_VP& vp) {
 
 void DGUSTxHandler::JunctionDeviation(DGUS_VP& vp) {
 #if HAS_JUNCTION_DEVIATION
-  const int16_t data = dgus_display.ToFixedPoint<float, int16_t, 3>(ExtUI::getJunctionDeviation_mm()));
+  const int16_t data = dgus_display.ToFixedPoint<float, int16_t, 3>(ExtUI::getJunctionDeviation_mm());
   dgus_display.Write((uint16_t)vp.addr, Swap16(data));
 #else
 #endif
